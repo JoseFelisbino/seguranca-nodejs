@@ -30,6 +30,14 @@ class UsuariosService {
             throw new Error('Erro ao cadastrar usuario')
         }
     }
+
+    async buscarTodosUsuarios() {
+        const usuarios = await database.usuarios.findAll();
+
+        return usuarios;
+    }
+
+    
 }
 
 module.exports = UsuariosService;
