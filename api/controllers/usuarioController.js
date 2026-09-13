@@ -36,6 +36,19 @@ class UsuarioController {
         }
     }
 
+    static async deletarUsuarioPorId(req, res){
+        const { id } = req.params;
+
+        try {
+            await usuarioService.deletarUsuarioPorId(id);
+
+            res.status(200).send({message: "Produto usuario deletado com sucesso"});
+        } catch (error) {
+            console.log("Message error", error.message);
+            res.status(400).send({message: error.message});
+        }
+    }
+
 }
 
 module.exports = UsuarioController;
