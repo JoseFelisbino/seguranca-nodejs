@@ -23,6 +23,19 @@ class UsuarioController {
         return res.status(200).json(usuarios);
     }
 
+    static async buscarUsuarioPorId(req, res){
+        const {id} = req.params;
+
+        try {
+            const usuario = await usuarioService.buscarUsuarioPorId(id);
+
+            res.status(200).json(usuario);
+        } catch (error) {
+            console.log("Message error", error.message);
+            res.status(400).send({message: error.message});
+        }
+    }
+
 }
 
 module.exports = UsuarioController;

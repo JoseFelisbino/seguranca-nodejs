@@ -1,5 +1,6 @@
 const database = require('../models')
 const {hash} = require('bcryptjs');
+const { where } = require('sequelize');
 const uuid = require('uuid');
 
 class UsuariosService {
@@ -37,7 +38,21 @@ class UsuariosService {
         return usuarios;
     }
 
-    
+    async buscarUsuarioPorId(id){
+        const usuario = await database.usuarios.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        if (!usuario) {
+            throw new Error("Usuário informado não encontrado");
+        }
+
+        return usuario;
+    }
+
+
 }
 
 module.exports = UsuariosService;
