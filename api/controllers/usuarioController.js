@@ -49,6 +49,24 @@ class UsuarioController {
         }
     }
 
+    static async editarProdutoPorId(req, res){
+        const { id } = req.params;
+        const { nome, email } = req.body;
+
+        try {
+            const usuario = await usuarioService.editarProdutoPorId({
+                id,
+                nome,
+                email
+            });
+
+            res.status(200).json(usuario);
+        } catch (error) {
+            console.log('Message error: ', error.message);
+            res.status(400).send({ message: error.message});
+        }
+    }
+
 }
 
 module.exports = UsuarioController;

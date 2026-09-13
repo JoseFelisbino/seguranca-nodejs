@@ -66,6 +66,22 @@ class UsuariosService {
         }
     }
 
+    async editarProdutoPorId(dto) {
+       const usuario = await this.buscarUsuarioPorId(dto.id);
+
+        try {
+            usuario.nome = dto.nome;
+            usuario.email = dto.email;
+
+            await usuario.save();
+
+            return await usuario.reload();
+        } catch (error) {
+            console.error('Message error:', error.message);
+            throw error;
+        }
+    }
+
 
 }
 
