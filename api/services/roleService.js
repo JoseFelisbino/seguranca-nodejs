@@ -59,6 +59,22 @@ class RoleService {
             throw new Error("Erro ao tentar deletar role");
         }
     }
+
+    async editarRolePorId(dto){
+        const role = await this.buscarRolePorId(dto.id);
+
+        try {
+            role.nome = dto.nome;
+            role.descricao = dto.descricao;
+
+            await role.save();
+
+            return await role.reload();
+        } catch (error) {
+            console.error('Message error:', error.message);
+            throw error;
+        }
+    }
 }
 
 module.exports = RoleService;
