@@ -3,13 +3,13 @@ const jsonSecret = require('../config/jsonSecret')
 
 
 module.exports = async (req, res, next) => {
-    const token = req.headers.autorization;
+    const token = req.headers.authorization
 
-    if (token) {
-        res.status(401).send('Access token não informado');
+    if (!token) {
+        return res.status(401).send('Access token não informado');
     }
 
-    const [, accessToken] = token.spilt(" ");
+    const [, accessToken] = token.split(" ");
 
     try {
         verify(accessToken, jsonSecret.secret)
