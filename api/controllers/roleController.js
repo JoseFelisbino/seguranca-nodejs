@@ -33,6 +33,19 @@ class RoleController {
                 res.status(400).send({message: error.message});
             }
         }
+
+        static async deletarRolePorId(req, res){
+            const { id } = req.params;
+
+            try {
+                await roleService.deletarRolePorId(id);
+
+                res.status(200).send({message: "Role deletado com sucesso"});
+            } catch (error) {
+                console.log("Message error", error.message);
+                res.status(400).send({message: error.message});
+            }
+        }
 }
 
 module.exports = RoleController;
