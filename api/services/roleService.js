@@ -25,6 +25,26 @@ class RoleService {
             throw new Error("Erro ao cadastrar role");
         }
     }
+
+     async buscarTodosRoles() {
+        const roles = await database.roles.findAll();
+
+        return roles
+    }
+
+    async buscarRolePorId(id){
+        const role = await database.roles.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        if (!role) {
+            throw new Error("Role informado não encontrado");
+        }
+
+        return role;
+    }
 }
 
 module.exports = RoleService;

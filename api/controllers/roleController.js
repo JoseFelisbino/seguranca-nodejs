@@ -14,6 +14,25 @@ class RoleController {
                 res.status(400).send({ message: error.message});
             }
         }
+
+        static async buscarTodosRoles(req, res){
+            const roles = await roleService.buscarTodosRoles();
+
+            return res.status(200).json(roles);
+        }
+
+        static async buscarRolePorId(req, res){
+            const { id } = req.params;
+
+            try {
+                const role = await roleService.buscarRolePorId(id);
+
+                res.status(200).json(role);
+            } catch (error) {
+                console.log("Message error", error.message);
+                res.status(400).send({message: error.message});
+            }
+        }
 }
 
 module.exports = RoleController;
