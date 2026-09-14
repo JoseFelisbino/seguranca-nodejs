@@ -45,6 +45,20 @@ class RoleService {
 
         return role;
     }
+
+    async deletarRolePorId(id){
+        await this.buscarRolePorId(id);
+
+        try {
+            await database.roles.destroy({
+                where: {
+                    id: id
+                }
+            });
+        } catch (error) {
+            throw new Error("Erro ao tentar deletar role");
+        }
+    }
 }
 
 module.exports = RoleService;
