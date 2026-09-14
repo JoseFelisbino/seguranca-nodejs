@@ -5,8 +5,8 @@ const router = Router();
 
 router
     .post('/roles', RoleController.cadastrar)
-    .get('/role')
-    .get('/role/:id')
+    .get('/role', RoleController.buscarTodosRoles)
+    .get('/role/:id', RoleController.buscarRolePorId)
     .delete('/role/:id')
     .put('/role/:id')
 
