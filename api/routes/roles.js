@@ -8,6 +8,6 @@ router
     .get('/role', RoleController.buscarTodosRoles)
     .get('/role/:id', RoleController.buscarRolePorId)
     .delete('/role/:id', RoleController.deletarRolePorId)
-    .put('/role/:id')
+    .put('/role/:id', RoleController.editarRolePorId)
 
 module.exports = router;
