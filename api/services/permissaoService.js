@@ -27,6 +27,12 @@ class PermissaoService {
             
         }
     }
+
+    async buscarTodosProdutos(){
+        const permissoes = await database.permissoes.findAll();
+
+        return permissoes;
+    }
 }
 
 module.exports = PermissaoService;
