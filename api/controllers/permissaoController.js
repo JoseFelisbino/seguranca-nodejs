@@ -15,6 +15,12 @@ class PermissaoController {
         }
     }
 
+    static async buscarTodasPermissoes(req, res){
+        const permissoes = await permissaoService.buscarTodosProdutos();
+
+        res.status(200).json(permissoes);
+    }
+
 }
 
 module.exports = PermissaoController
