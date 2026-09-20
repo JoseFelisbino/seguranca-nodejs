@@ -33,6 +33,21 @@ class PermissaoService {
 
         return permissoes;
     }
+
+    async buscarPermissaoPorId(id){
+        const permissao = await database.permissoes.findOne({
+            where: {
+                id: id
+            }
+        });
+
+        if (!permissao) {
+            throw new Error("Permissão informada não encontrada");
+            
+        }
+
+        return permissao;
+    }
 }
 
 module.exports = PermissaoService;
