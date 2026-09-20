@@ -48,6 +48,22 @@ class PermissaoService {
 
         return permissao;
     }
+
+    async deletarPermissaoPorId(id){
+        await this.buscarPermissaoPorId(id);
+
+        try {
+            await database.permissoes.destroy({
+                where: {
+                    id: id
+                }
+            });
+
+        } catch (error) {
+            throw new Error("Erro ao tentar deletar permissão");
+            
+        }
+    }
 }
 
 module.exports = PermissaoService;
