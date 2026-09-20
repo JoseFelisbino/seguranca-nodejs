@@ -17,14 +17,14 @@ const roles = (listaRoles) => {
         })
 
         if (!usuario) {
-            res.status(401).send('Usuario não cadastrado');
+            return res.status(401).send('Usuario não cadastrado');
         }
 
         const rolesCadastradas = usuario.usuarios_roles.map((role) => role.nome)
-        .some((role) => listaRoles.include(role))
+        .some((role) => listaRoles.includes(role))
 
         if (!rolesCadastradas){
-            res.status(401).send("Usuario não possui acessso a essa rota");
+            return res.status(401).send("Usuario não possui acessso a essa rota");
         }
 
         return next();

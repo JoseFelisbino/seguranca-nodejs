@@ -48,6 +48,9 @@ class SegurancaService {
         await usuario.addUsuario_permissoes(permissoesCadastradas);
 
         const novoUsuario = await database.usuarios.findOne({
+            where: {
+                id: dto.usuarioId
+            },
             include: [
                 {
                     model: database.roles,
