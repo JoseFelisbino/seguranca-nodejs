@@ -47,6 +47,20 @@ class PermissaoController {
         }
     }
 
+    static async editarPermissao(req, res) {
+        const {id} = req.params;
+        const { nome, descricao} = req.body;
+
+        try {
+            const permissao = await permissaoService.editarPermissao({id, nome, descricao});
+
+            res.status(200).json(permissao);
+        } catch (error) {
+            console.log('Message error', error.message);
+            res.status(400).send({ message: error.message});
+        }
+    }
+
 }
 
 module.exports = PermissaoController
