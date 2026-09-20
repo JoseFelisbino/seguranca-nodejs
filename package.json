@@ -5,7 +5,9 @@
   "main": "index.js",
   "nodeVersion": "18.15.0",
   "scripts": {
-    "start": "nodemon ./api/index.js"
+  "dev": "nodemon ./api/index.js",
+  "start": "node ./api/index.js",
+  "migrate": "sequelize-cli db:migrate"
   },
   "keywords": [],
   "author": "Raphael Lucas Girao de Lima",
