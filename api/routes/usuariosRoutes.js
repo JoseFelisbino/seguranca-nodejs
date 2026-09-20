@@ -7,7 +7,6 @@ const router = Router();
 router.use(autenticado);
 
 router
-    .post('/usuarios', UsuarioController.cadastrar)
     .get('/usuarios', UsuarioController.buscarTodosUsuarios)
     .get('/usuarios/:id', UsuarioController.buscarUsuarioPorId)
     .put('/usuarios/:id', UsuarioController.editarProdutoPorId)
