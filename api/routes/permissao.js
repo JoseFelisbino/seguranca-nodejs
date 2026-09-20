@@ -8,6 +8,6 @@ router
     .get('/permissao', PermissaoController.buscarTodasPermissoes)
     .get('/permissao/:id', PermissaoController.buscarPermissaoPorId)
     .delete('/permissao/:id', PermissaoController.deletarPermissaoPorId)
-    .put('/permissao/:id')
+    .put('/permissao/:id', PermissaoController.editarPermissao)
 
 module.exports = router;
