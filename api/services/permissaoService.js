@@ -64,6 +64,22 @@ class PermissaoService {
             
         }
     }
+
+    async editarPermissao(dto){
+        const permissao = await this.buscarPermissaoPorId(dto.id);
+
+        try {
+            permissao.nome = dto.nome;
+            permissao.descricao = dto.descricao;
+
+            await permissao.save();
+
+            return await permissao.reload();
+        } catch (error) {
+            console.error('Message error:', error.message);
+            throw error;
+        }
+    }
 }
 
 module.exports = PermissaoService;
