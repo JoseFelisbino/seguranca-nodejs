@@ -9,7 +9,7 @@ class SegurancaController {
         const { usuarioId} = req
 
         try {
-            const acl = await segurancaService.cadastrarAcl({ roles, permisoes, usuarioId});
+            const acl = await segurancaService.cadastrarAcl({ roles, permissoes, usuarioId});
 
             res.status(201).send(acl);
         } catch (error) {
